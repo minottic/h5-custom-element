@@ -34,9 +34,19 @@ export class H5WebViewer extends HTMLElement {
     this.unmount();
   }
 
-  set file(file: File) {
-    this._file = file;
+  set base64Data(base64Data: string) {
+    this._file = this.base64ToFile(base64Data);
     this.mount();
+  }
+
+  private base64ToFile(base64Data: string, filename = "foo.h5", mimeType = ''): File {
+    const base64 = base64Data.split(',')[1]
+    const binary = atob(base64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) {
+      bytes[i] = binary.charCodeAt(i);
+    }
+    return new File([bytes], filename, { type: mimeType });
   }
 
   private mount() {
