@@ -1,4 +1,9 @@
 FROM node:24
 
-# Set working directory
 WORKDIR /app
+
+COPY app/ .
+
+RUN npm install
+
+CMD ["npm", "run", "build"]

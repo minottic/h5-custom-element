@@ -2,5 +2,5 @@ services:
   h5web-wrapper:
     build: .
     volumes:
-      - .:/app
-    command: sleep infinity
+      - ./app:/app
+      - /app/node_modules
