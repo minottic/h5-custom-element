@@ -1,4 +1,9 @@
-FROM node:24
+FROM node:24 as DEV
 
-# Set working directory
 WORKDIR /app
+
+COPY app/ .
+
+RUN npm install
+
+RUN npm run build
