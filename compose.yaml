@@ -1,0 +1,6 @@
+services:
+  h5web-wrapper:
+    build: .
+    volumes:
+      - .:/app
+    command: sleep infinity

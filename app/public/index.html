@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>H5Web Test</title>
+  <style>
+    h5web-viewer {
+      display: block;
+      height: 600px;
+      width: 100%;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>H5Web Web Component Test</h1>
+  <input type="file" id="fileInput" />
+  <h5web-viewer id="viewer"></h5web-viewer>
+
+  <script src="../dist/h5web.bundle.js"></script>
+  <script>
+    document.getElementById('fileInput').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        document.getElementById('viewer').file = file;
+      }
+    });
+  </script>
+</body>
+</html>
