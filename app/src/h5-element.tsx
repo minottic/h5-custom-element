@@ -36,7 +36,9 @@ export class H5WebViewer extends HTMLElement {
 
   set base64Data(base64Data: string) {
     this._file = this.base64ToFile(base64Data);
-    this.mount();
+    if (this.container && this.isConnected) {
+      this.mount();
+    }
   }
 
   private base64ToFile(base64Data: string, filename = "foo.h5", mimeType = ''): File {
