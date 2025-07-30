@@ -15,17 +15,18 @@
 </head>
 <body>
   <h1>H5Web Web Component Test</h1>
-  <input type="file" id="fileInput" />
   <h5web-viewer id="viewer"></h5web-viewer>
 
   <script src="../dist/h5web.bundle.js"></script>
   <script>
-    document.getElementById('fileInput').addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file) {
-        document.getElementById('viewer').file = file;
-      }
-    });
+    fetch('http://backend.localhost/api/v3/datasets/PID.SAMPLE.PREFIX%2Fukri_ds3/attachments')
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(buffer => {
+        document.getElementById('viewer').base64Data = buffer[0].thumbnail;
+      })
   </script>
 </body>
 </html>
