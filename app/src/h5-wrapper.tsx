@@ -11,7 +11,7 @@ function H5Wrapper({ file }: Props) {
   }
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '800px', height: '600px' }}>
       <H5WasmLocalFileProvider file={file}>
         <App />
       </H5WasmLocalFileProvider>
