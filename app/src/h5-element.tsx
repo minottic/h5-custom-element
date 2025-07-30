@@ -8,7 +8,7 @@ export class H5WebViewer extends HTMLElement {
   private shadow?: ShadowRoot;
   private container?: HTMLDivElement;
   private _file?: File;
-  private _name?: string
+  private _fileName?: string
 
   static get observedAttributes() {
     return [];
@@ -42,15 +42,14 @@ export class H5WebViewer extends HTMLElement {
     }
   }
 
-  set name(name: string) {
-    this._name = name;
+  set fileName(name: string) {
+    this._fileName = name;
     if (this.container && this.isConnected) {
       this.mount();
     }
   }
 
-
-  private base64ToFile(base64Data: string, filename = this._name, mimeType = ''): File {
+  private base64ToFile(base64Data: string, filename = this._fileName, mimeType = ''): File {
     const base64 = base64Data.split(',')[1]
     const binary = atob(base64);
     const bytes = new Uint8Array(binary.length);
